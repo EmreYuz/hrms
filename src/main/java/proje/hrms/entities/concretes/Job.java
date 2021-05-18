@@ -19,4 +19,5 @@ public class Job {
 
     @Column(name = "job_description")
     private String jobDescription;
+    
 }

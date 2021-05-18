@@ -11,14 +11,13 @@ import java.util.List;
 @Service
 public class JobManager implements JobService {
 
-    JobDao jobDao;
+    private JobDao jobDao;
 
     @Autowired
     public JobManager(JobDao jobDao) {
         this.jobDao = jobDao;
     }
 
-    @Autowired
     @Override
     public List<Job> getAll() {
         return this.jobDao.findAll();

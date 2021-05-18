@@ -1,6 +1,7 @@
 package proje.hrms.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import proje.hrms.business.abstracts.JobService;
@@ -12,14 +13,15 @@ import java.util.List;
 @RequestMapping("/api/jobs")
 public class JobsController {
 
-    JobService jobService;
+    private JobService jobService;
 
     @Autowired
     public JobsController(JobService jobService) {
         this.jobService = jobService;
     }
 
-    List<Job> getAll() {
+    @GetMapping("/getall")
+    public List<Job> getAll() {
         return this.jobService.getAll();
     }
 }
