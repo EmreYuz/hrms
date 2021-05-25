@@ -1,16 +1,20 @@
 package proje.hrms.entities.concretes;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "job_seekers")
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobSeeker {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "job_seeker_id")
     private int jobSeekerId;
 
