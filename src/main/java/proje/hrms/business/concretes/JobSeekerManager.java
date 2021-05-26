@@ -28,13 +28,21 @@ public class JobSeekerManager implements JobSeekerService {
 
     @Override
     public Result register(JobSeeker jobSeeker) throws Exception {
-        if (this.mernisService.validateWithMernis(jobSeeker)) {
-            this.jobSeekerDao.save(jobSeeker);
-            return new SuccessResult("İş arayan kayıt işlemi başarılı.");
+
+        if (!jobSeeker.getFirstName().isEmpty()
+                && !jobSeeker.getLastName().isEmpty()
+                && !jobSeeker.getNationalIdNo().isEmpty()
+                && !jobSeeker.getEmail().isEmpty()
+                && !jobSeeker.getBirthYear().equals(null)) {
+
+            if (this.mernisService.validateWithMernis(jobSeeker)) {
+                this.jobSeekerDao.save(jobSeeker);
+                return new SuccessResult("İş arayan kayıt işlemi başarılı.");
+            } else {
+                return new ErrorResult("Mernis sorgusu başarısız.");
+            }
         } else {
-            return new ErrorResult("Mernis sorgusu başarısız.");
+            return new ErrorResult("Kayıt için tüm alanların doldurulması gereklidir.");
         }
-
     }
-
 }

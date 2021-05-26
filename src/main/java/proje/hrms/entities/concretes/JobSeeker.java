@@ -28,7 +28,7 @@ public class JobSeeker {
     private String nationalIdNo;
 
     @Column(name = "birth_year")
-    private int birthYear;
+    private Integer birthYear;
 
     @Column(name = "email")
     private String email;

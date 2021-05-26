@@ -24,14 +24,22 @@ public class EmployerManager implements EmployerService {
 
     @Override
     public Result register(Employer employer) {
-        if (checkIfEmailExists(employer.getEmail())) {
-            return new ErrorResult("Bu e-posta adresi başka bir kullanıcı tarafından kullanılmaktadır.");
-        } else if (!checkIfEmailHasSameDomainWithWebsite(employer.getEmail())) {
-            return new ErrorResult("E-posta adresi ile web sitesi aynı domaine sahip olmalıdır.");
-        } else {
-            this.employerDao.save(employer);
-            return new SuccessResult("İş veren kayıt işlemi başarılı.");
+
+        if (!employer.getCompanyName().isEmpty()
+                && !employer.getWebsite().isEmpty()
+                && !employer.getEmail().isEmpty()
+                && !employer.getPhoneNumber().isEmpty()) {
+
+            if (checkIfEmailExists(employer.getEmail())) {
+                return new ErrorResult("Bu e-posta adresi başka bir kullanıcı tarafından kullanılmaktadır.");
+            } else if (!checkIfEmailHasSameDomainWithWebsite(employer.getEmail())) {
+                return new ErrorResult("E-posta adresi ile web sitesi aynı domaine sahip olmalıdır.");
+            } else {
+                this.employerDao.save(employer);
+                return new SuccessResult("İş veren kayıt işlemi başarılı.");
+            }
         }
+        return new ErrorResult("Kayıt için tüm alanların doldurulması gereklidir.");
     }
 
     public boolean checkIfEmailHasSameDomainWithWebsite(String emailToSearch) {
