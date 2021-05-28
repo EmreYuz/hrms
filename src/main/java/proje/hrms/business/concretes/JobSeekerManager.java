@@ -45,4 +45,9 @@ public class JobSeekerManager implements JobSeekerService {
             return new ErrorResult("Kayıt için tüm alanların doldurulması gereklidir.");
         }
     }
+
+    @Override
+    public DataResult<List<JobSeeker>> getJobSeekerByEmailOrNationalIdNo(String email, String nationalIdNo) {
+        return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.getJobSeekerByEmailOrNationalIdNo(email, nationalIdNo), "İş arayanlar listelendi.");
+    }
 }

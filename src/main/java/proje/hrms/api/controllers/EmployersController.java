@@ -7,7 +7,7 @@ import proje.hrms.business.abstracts.EmployerService;
 import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.Result;
 import proje.hrms.entities.concretes.Employer;
-import proje.hrms.entities.concretes.Job;
+
 
 import java.util.List;
 
@@ -22,15 +22,18 @@ public class EmployersController {
         this.employerService = employerService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<Employer>> getAll() {
-
         return this.employerService.getAll();
     }
 
     @PostMapping("/register")
     public Result register(@RequestBody Employer employer) {
-
         return this.employerService.register(employer);
+    }
+
+    @GetMapping("/getEmployerByEmail")
+    public DataResult<Employer> getEmployerByEmail(@RequestParam String email) {
+        return this.employerService.getEmployerByEmail(email);
     }
 }

@@ -42,6 +42,12 @@ public class EmployerManager implements EmployerService {
         return new ErrorResult("Kayıt için tüm alanların doldurulması gereklidir.");
     }
 
+    @Override
+    public DataResult<Employer> getEmployerByEmail(String email) {
+        return new SuccessDataResult<Employer>(this.employerDao.getEmployerByEmail(email), "İş veren listelendi.");
+    }
+
+
     public boolean checkIfEmailHasSameDomainWithWebsite(String emailToSearch) {
         List<Employer> employers = this.employerDao.findAll();
         for (Employer employer : employers) {

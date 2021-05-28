@@ -31,4 +31,9 @@ public class JobSeekersController {
 
         return this.jobSeekerService.register(jobSeeker);
     }
+
+    @GetMapping("/getJobSeekerByEmailOrNationalIdNo")
+    public DataResult<List<JobSeeker>> getJobSeekerByEmailOrNationalIdNo(@RequestParam String email, String nationalIdNo){
+        return this.jobSeekerService.getJobSeekerByEmailOrNationalIdNo(email, nationalIdNo);
+    }
 }

@@ -9,4 +9,5 @@ import java.util.List;
 public interface JobSeekerService {
     DataResult<List<JobSeeker>> getAll();
     Result register(JobSeeker jobSeeker) throws Exception;
+    DataResult<List<JobSeeker>> getJobSeekerByEmailOrNationalIdNo(String email, String nationalIdNo);
 }
