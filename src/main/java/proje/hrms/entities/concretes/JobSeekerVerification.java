@@ -18,12 +18,16 @@ public class JobSeekerVerification {
     @Column(name = "job_seeker_verification_id")
     private int jobSeekerVerificationId;
 
-    @Column(name = "job_seeker_id")
-    private int jobSeekerId;
+//    @Column(name = "job_seeker_id")
+//    private int jobSeekerId;
 
     @Column(name = "job_seeker_is_verified_by_mernis")
     private boolean isVerifiedByMernis;
 
     @Column(name = "job_seeker_is_verified_by_email")
     private boolean isVerifiedByEmail;
+
+    @OneToOne
+    @JoinColumn(name="job_seeker_id")
+    private JobSeeker jobSeeker;
 }

@@ -32,4 +32,7 @@ public class JobSeeker {
 
     @Column(name = "email")
     private String email;
+
+    @OneToOne(mappedBy = "job_seeker")
+    private JobSeekerVerification jobSeekerVerification;
 }

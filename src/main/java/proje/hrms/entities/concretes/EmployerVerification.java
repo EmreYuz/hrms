@@ -18,8 +18,8 @@ public class EmployerVerification {
     @Column(name = "employer_verification_id")
     private int employerVerificationId;
 
-    @Column(name = "employer_id")
-    private int employerId;
+//    @Column(name = "employer_id")
+//    private int employerId;
 
     @Column(name = "employer_is_verified_by_email")
     private boolean verifiedByEmail;
@@ -29,4 +29,8 @@ public class EmployerVerification {
 
     @Column(name = "verificator_personnel_id")
     private int verificatorPersonnelId;
+
+    @OneToOne
+    @JoinColumn(name="employer_id")
+    private Employer employer;
 }
