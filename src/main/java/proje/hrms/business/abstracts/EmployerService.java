@@ -7,7 +7,18 @@ import proje.hrms.entities.concretes.Employer;
 import java.util.List;
 
 public interface EmployerService {
-    DataResult<List<Employer>> getAll();
-    Result register(Employer employer);
-    DataResult<Employer> getEmployerByEmail(String email);
+
+    Result add(Employer employer);
+
+    Result update(Employer employer);
+
+    Result delete(Employer employer);
+
+    DataResult<Employer> getByEmail(String email);
+
+    DataResult<List<Employer>> getByCompanyName(String companyName);
+
+    DataResult<List<Employer>> getByPhoneNumber(String phoneNumber);
+
+    DataResult<List<Employer>> getByIsVerifiedBySystemPersonnelAndEAndEmailVerified(boolean isVerifiedBySystemPersonnel, boolean isEmailVerified);
 }

@@ -2,34 +2,26 @@ package proje.hrms.entities.concretes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Data
 @Entity
 @Table(name = "system_personnels")
 @AllArgsConstructor
 @NoArgsConstructor
-public class SystemPersonnel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "system_personnel_id")
-    private int systemPersonnelId;
-
-    @Column(name = "system_personnel_description")
-    private String systemPersonnelDescription;
+@EqualsAndHashCode(callSuper = false)
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
+public class SystemPersonnel extends User {
 
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "national_id_number")
-    private String nationalIdNo;
 }

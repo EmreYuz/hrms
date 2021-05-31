@@ -3,7 +3,6 @@ package proje.hrms.entities.concretes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,36 +10,31 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data
-@Entity
-@Table(name = "jobs")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@Entity
+@Table(name = "cities")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
-public class Job {
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "job_name")
-    private String jobName;
-
-    @Column(name = "job_description")
-    private String jobDescription;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "created_date", columnDefinition = "Date default CURRENT_DATE")
     private LocalDate createdDate = LocalDate.now();
 
-    @Column(name = "is_active", columnDefinition = "boolean default true")
-    private Boolean isActive = true;
-
     @Column(name = "is_deleted", columnDefinition = "boolean default false")
     private Boolean isDeleted = false;
+
+    @Column(name = "is_opened")
+    private Boolean isOpened;
 
 
     @OneToMany(mappedBy = "id")
     private List<JobAd> jobAds;
-
 }
