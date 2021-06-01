@@ -7,8 +7,4 @@ public interface VerificationCodeService {
 
     Result add(VerificationCode verificationCode);
 
-    Result update(VerificationCode verificationCode);
-
-    Result delete(VerificationCode verificationCode);
-
 }

@@ -8,8 +8,9 @@ import java.util.List;
 
 public interface JobAdDao extends JpaRepository<JobAd, Integer> {
 
-    List<JobAd> getByActive(boolean isActive);
+    @Query("from JobAd where isActive=true")
+    List<JobAd> getByIsActive();
 
-    List<JobAd> getByEmployerAndActive(int employerId, boolean isActive);
+    List<JobAd> getByEmployer_CompanyName(String companyName);
 
 }

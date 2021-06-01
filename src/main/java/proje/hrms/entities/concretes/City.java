@@ -3,6 +3,7 @@ package proje.hrms.entities.concretes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "cities")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAds"})
 public class City {
 
     @Id
@@ -35,6 +36,6 @@ public class City {
     private Boolean isOpened;
 
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "city")
     private List<JobAd> jobAds;
 }

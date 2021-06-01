@@ -1,4 +1,4 @@
-package proje.hrms.core.utilities.adapters.services;
+package proje.hrms.core.utilities.adapters;
 
 import proje.hrms.entities.concretes.Candidate;
 

@@ -16,9 +16,4 @@ public interface CandidateService {
 
     DataResult<List<Candidate>> getAll();
 
-    DataResult<Candidate> getByNationalIdNo(String nationalIdNo);
-
-    DataResult<Candidate> getByEmail(String email);
-
-    DataResult<List<Candidate>> getByIsEmailVerifiedAndIsMernisVerified(boolean isEmailVerified, boolean isMernisVerified);
 }

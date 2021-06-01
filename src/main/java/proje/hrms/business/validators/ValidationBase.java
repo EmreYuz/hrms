@@ -10,10 +10,15 @@ public class ValidationBase {
         return candidate.getPassword().equals(candidate.getPasswordAgain());
     }
 
-    public static boolean checkEmailDomain(String email, String website) {
-        var emailParameters = email.split("@");
+    public static boolean checkEmailAndDomain(String email, String website) {
+        String[] emailArr = email.split("@", 2);
+        String domain = website.substring(4, website.length());
 
-        var domain = emailParameters[emailParameters.length - 1];
-        return domain.equals(website.toLowerCase(Locale.ROOT));
+        if (emailArr[1].equals(domain)) {
+
+            return true;
+        }
+
+        return false;
     }
 }

@@ -28,10 +28,10 @@ public class JobAd {
     private int openPositionNumber;
 
     @Column(name = "min_salary")
-    private double minSalary;
+    private int minSalary;
 
     @Column(name = "max_salary")
-    private double maxSalary;
+    private int maxSalary;
 
     @Column(name = "application_deadline")
     private LocalDate applicationDeadline;
@@ -53,15 +53,15 @@ public class JobAd {
 
 
     @ManyToOne()
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "employer_id")
     private Employer employer;
 
     @ManyToOne()
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "city_id")
     private City city;
 
     @ManyToOne()
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "job_id")
     private Job job;
 
 }

@@ -15,8 +15,8 @@ import java.util.List;
 @Table(name = "jobs")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
+// @EqualsAndHashCode
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAds"})
 public class Job {
 
     @Id
@@ -40,7 +40,7 @@ public class Job {
     private Boolean isDeleted = false;
 
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "job")
     private List<JobAd> jobAds;
 
 }

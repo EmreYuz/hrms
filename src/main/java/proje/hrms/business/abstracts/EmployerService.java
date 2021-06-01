@@ -14,11 +14,6 @@ public interface EmployerService {
 
     Result delete(Employer employer);
 
-    DataResult<Employer> getByEmail(String email);
+    DataResult<List<Employer>> getAll();
 
-    DataResult<List<Employer>> getByCompanyName(String companyName);
-
-    DataResult<List<Employer>> getByPhoneNumber(String phoneNumber);
-
-    DataResult<List<Employer>> getByIsVerifiedBySystemPersonnelAndEAndEmailVerified(boolean isVerifiedBySystemPersonnel, boolean isEmailVerified);
 }

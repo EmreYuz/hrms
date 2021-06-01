@@ -1,15 +1,19 @@
 package proje.hrms.business.validators.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import proje.hrms.business.validators.ValidationBase;
-import proje.hrms.core.utilities.adapters.services.PersonValidationService;
+import proje.hrms.core.utilities.adapters.PersonValidationService;
 import proje.hrms.core.utilities.verification.EmailVerificationService;
 import proje.hrms.entities.concretes.Candidate;
 
-public class CandidateValidator extends ValidationBase {
+
+@Service
+public class CandidateValidator implements CandidateValidationService {
 
     private PersonValidationService personValidationService;
     private EmailVerificationService emailVerificationService;
+
 
     @Autowired
     public CandidateValidator(PersonValidationService personValidationService, EmailVerificationService emailVerificationService) {

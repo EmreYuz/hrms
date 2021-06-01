@@ -43,13 +43,13 @@ public class Candidate extends User {
     @NotNull
     private Integer birthYear;
 
-    @Column(name = "is_verified_by_email")
+    @Column(name = "is_verified_by_email", columnDefinition = "boolean default false")
     @NotBlank
     @NotNull
-    private Boolean isEmailVerified;
+    private Boolean isEmailVerified = false;
 
-    @Column(name = "is_verified_by_mernis")
+    @Column(name = "is_verified_by_mernis", columnDefinition = "boolean default false")
     @NotBlank
     @NotNull
-    private Boolean isMernisVerified;
+    private Boolean isMernisVerified = false;
 }

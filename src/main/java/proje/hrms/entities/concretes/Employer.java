@@ -16,9 +16,9 @@ import java.util.List;
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
-@EqualsAndHashCode(callSuper = false)
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAds"})
+// @EqualsAndHashCode(callSuper = false)
 public class Employer extends User {
 
     @Column(name = "phone_number")
@@ -36,17 +36,17 @@ public class Employer extends User {
     @NotNull
     private String website;
 
-    @Column(name = "is_email_verified")
+    @Column(name = "is_email_verified", columnDefinition = "boolean default false")
     @NotBlank
     @NotNull
-    private boolean isEmailVerified;
+    private boolean isEmailVerified = false;
 
-    @Column(name = "is_verified_by_system_personnel")
+    @Column(name = "is_verified_by_system_personnel", columnDefinition = "boolean default false")
     @NotBlank
     @NotNull
-    private Boolean isVerifiedBySystemPersonnel;
+    private Boolean isVerifiedBySystemPersonnel = false;
 
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "employer")
     private List<JobAd> jobAds;
 }

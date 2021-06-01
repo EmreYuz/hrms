@@ -1,13 +1,16 @@
 package proje.hrms.business.validators.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import proje.hrms.business.validators.ValidationBase;
 import proje.hrms.core.utilities.verification.EmailVerificationService;
 import proje.hrms.core.utilities.verification.PersonnelVerificationService;
 import proje.hrms.entities.concretes.Employer;
 import proje.hrms.entities.concretes.SystemPersonnel;
 
-public class EmployerValidator extends ValidationBase {
+
+@Service
+public class EmployerValidator implements EmployerValidationService {
 
         private EmailVerificationService emailVerificationService;
         private PersonnelVerificationService personnelVerificationService;
@@ -21,9 +24,10 @@ public class EmployerValidator extends ValidationBase {
         public boolean isValidated(Employer employer, SystemPersonnel systemPersonnel){
                 if(!this.emailVerificationService.isVerificationCodeClicked(employer.getEmail())
                         && !this.personnelVerificationService.isPersonnelApproved(employer, systemPersonnel)
-                        && !ValidationBase.checkEmailDomain(employer.getEmail(), employer.getWebsite())){
+                        && !ValidationBase.checkEmailAndDomain(employer.getEmail(), employer.getWebsite())){
                         return false;
                 }
                 return true;
         }
+
 }

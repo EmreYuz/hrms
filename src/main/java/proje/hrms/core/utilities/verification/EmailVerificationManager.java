@@ -1,10 +1,12 @@
 package proje.hrms.core.utilities.verification;
 
+import org.springframework.stereotype.Service;
 import proje.hrms.core.utilities.result.Result;
 import proje.hrms.core.utilities.result.SuccessResult;
 
 import java.util.UUID;
 
+@Service
 public class EmailVerificationManager implements EmailVerificationService {
 
     public String codeGenerator() {

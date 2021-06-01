@@ -3,7 +3,6 @@ package proje.hrms.business.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proje.hrms.business.abstracts.CandidateService;
-import proje.hrms.core.utilities.adapters.services.PersonValidationService;
 import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.Result;
 import proje.hrms.core.utilities.result.SuccessDataResult;
@@ -43,21 +42,7 @@ public class CandidateManager implements CandidateService {
 
     @Override
     public DataResult<List<Candidate>> getAll() {
-        return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll());
+        return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(), "İş arayanlar listelendi.");
     }
 
-    @Override
-    public DataResult<Candidate> getByNationalIdNo(String nationalIdNo) {
-        return new SuccessDataResult<Candidate>(this.candidateDao.getByNationalIdNo(nationalIdNo));
-    }
-
-    @Override
-    public DataResult<Candidate> getByEmail(String email) {
-        return new SuccessDataResult<Candidate>(this.candidateDao.getByEmail(email));
-    }
-
-    @Override
-    public DataResult<List<Candidate>> getByIsEmailVerifiedAndIsMernisVerified(boolean isEmailVerified, boolean isMernisVerified) {
-        return new SuccessDataResult<List<Candidate>>(this.candidateDao.getByIsEmailVerifiedAndIsMernisVerified(isEmailVerified, isMernisVerified));
-    }
 }

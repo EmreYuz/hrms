@@ -15,7 +15,9 @@ public interface JobAdService {
 
     Result delete(JobAd jobAd);
 
-    DataResult<List<JobAd>> getByActive(boolean isActive);
+    DataResult<List<JobAd>> getAll();
 
-    DataResult<List<JobAd>> getByEmployerAndActive(int employerId, boolean isActive);
+    DataResult<List<JobAd>> getByIsActive();
+
+    DataResult<List<JobAd>> getByEmployer_CompanyName(String companyName);
 }
