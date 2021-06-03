@@ -32,9 +32,6 @@ public class City {
     @Column(name = "is_deleted", columnDefinition = "boolean default false")
     private Boolean isDeleted = false;
 
-    @Column(name = "is_opened")
-    private Boolean isOpened;
-
 
     @OneToMany(mappedBy = "city")
     private List<JobAd> jobAds;

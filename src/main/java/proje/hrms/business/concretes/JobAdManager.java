@@ -9,6 +9,7 @@ import proje.hrms.core.utilities.result.SuccessDataResult;
 import proje.hrms.core.utilities.result.SuccessResult;
 import proje.hrms.dataAccess.abstracts.JobAdDao;
 import proje.hrms.entities.concretes.JobAd;
+import proje.hrms.entities.dtos.JobAdWithEmployerAndJobDto;
 
 import java.util.List;
 
@@ -44,8 +45,8 @@ public class JobAdManager implements JobAdService {
     }
 
     @Override
-    public DataResult<List<JobAd>> getByIsActive() {
-        return new SuccessDataResult<List<JobAd>>(this.jobAdDao.getByIsActive());
+    public DataResult<List<JobAd>> getJobAdsByIsActive() {
+        return new SuccessDataResult<List<JobAd>>(this.jobAdDao.getJobAdsByIsActive());
     }
 
     @Override
@@ -53,5 +54,13 @@ public class JobAdManager implements JobAdService {
         return new SuccessDataResult<List<JobAd>>(this.jobAdDao.getByEmployer_CompanyName(companyName));
     }
 
+    @Override
+    public DataResult<List<JobAd>> getJobAdsByIsActiveOrderedByCreatedDateDesc() {
+        return new SuccessDataResult<List<JobAd>>(this.jobAdDao.getJobAdsByIsActiveOrderedByCreatedDateDesc());
+    }
 
+    @Override
+    public DataResult<List<JobAd>> getJobAdsByEmployerAndIsActive(int employerId) {
+        return new SuccessDataResult<List<JobAd>>(this.jobAdDao.getJobAdsByEmployerAndIsActive(employerId));
+    }
 }

@@ -1,6 +1,7 @@
 package proje.hrms.entities.concretes;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,12 +40,15 @@ public class User {
     @NotNull
     private String passwordAgain;
 
+    @JsonIgnore
     @Column(name = "is_active", columnDefinition = "boolean default true")
     private Boolean isActive = true;
 
+    @JsonIgnore
     @Column(name = "is_deleted", columnDefinition = "boolean default false")
     private Boolean isDeleted = false;
 
+    @JsonIgnore
     @Column(name = "created_date", columnDefinition = "Date default CURRENT_DATE")
     private LocalDate createdDate = LocalDate.now();
 }

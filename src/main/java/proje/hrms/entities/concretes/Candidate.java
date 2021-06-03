@@ -1,6 +1,7 @@
 package proje.hrms.entities.concretes;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,10 +47,12 @@ public class Candidate extends User {
     @Column(name = "is_verified_by_email", columnDefinition = "boolean default false")
     @NotBlank
     @NotNull
+    @JsonIgnore
     private Boolean isEmailVerified = false;
 
     @Column(name = "is_verified_by_mernis", columnDefinition = "boolean default false")
     @NotBlank
     @NotNull
+    @JsonIgnore
     private Boolean isMernisVerified = false;
 }

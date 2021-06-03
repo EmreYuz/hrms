@@ -37,19 +37,13 @@ public class JobAd {
     private LocalDate applicationDeadline;
 
     @Column(name = "created_date")
-    @JsonIgnore
     private LocalDate createdDate = LocalDate.now();
 
     @Column(name = "is_active", columnDefinition = "boolean default true")
-    @JsonIgnore
     private boolean isActive = true;
 
     @Column(name = "is_deleted", columnDefinition = "boolean default false")
-    @JsonIgnore
     private boolean isDeleted = false;
-
-    @Column(name = "is_opened", columnDefinition = "boolean default true")
-    private boolean isOpened = true;
 
 
     @ManyToOne()
