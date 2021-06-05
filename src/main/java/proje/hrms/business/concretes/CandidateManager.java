@@ -24,7 +24,7 @@ public class CandidateManager implements CandidateService {
 
     @Override
     public Result add(Candidate candidate) {
-        this.candidateDao.save(candidate);
+        this.candidateDao.save(candidate); // bunu authService enjekte etmeden yaparsan validationları almamış oluyorsun. revize et.
         return new SuccessResult("İş arayan sisteme eklendi.");
     }
 

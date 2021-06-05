@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,9 +27,13 @@ public class Job {
     private int id;
 
     @Column(name = "job_name")
+    @NotBlank
+    @NotNull
     private String jobName;
 
     @Column(name = "job_description")
+    @NotBlank
+    @NotNull
     private String jobDescription;
 
     @Column(name = "created_date", columnDefinition = "Date default CURRENT_DATE")

@@ -2,18 +2,16 @@ package proje.hrms.entities.concretes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +20,7 @@ import java.time.LocalDate;
 @Table(name = "candidates")
 @EqualsAndHashCode(callSuper = false)
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAds"})
 public class Candidate extends User {
 
     @Column(name = "first_name")
@@ -55,4 +54,33 @@ public class Candidate extends User {
     @NotNull
     @JsonIgnore
     private Boolean isMernisVerified = false;
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "candidate")
+    private List<SchoolForCv> schools;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "candidate")
+    private List<ProgrammingSkillForCv> programingSkills;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "candidate")
+    private List<UrlForCv> urls;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "candidate")
+    private List<ForeignLanguageForCV> languages;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "candidate")
+    private List<JobExperienceForCV> experiences;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "candidate")
+    private List<CoverLetterForCv> coverLetters;
+
+//    @JsonIgnore
+//    @OneToOne(mappedBy = "jobseeker", optional=false, fetch=FetchType.LAZY)
+//    private ImageForCV image;
 }
