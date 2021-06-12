@@ -1,4 +1,4 @@
-package proje.hrms.mernis;
+package proje.hrms.core.utilities.outsourceServices.mernis;
 
 //----------------------------------------------------
 //

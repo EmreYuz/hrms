@@ -18,11 +18,8 @@ public class UrlForCv {
     @Column(name = "candidate_url_id")
     private int candidateUrlId;
 
-    @Column(name = "github_url")
-    private String githubUrl;
-
-    @Column(name = "linkedin_url")
-    private String linkedinUrl;
+    @Column(name = "candidate_url")
+    private String url;
 
 
     @ManyToOne()

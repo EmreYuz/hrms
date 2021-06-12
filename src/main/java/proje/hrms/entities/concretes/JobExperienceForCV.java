@@ -17,6 +17,17 @@ import java.util.List;
 @Table(name="job_experiences")
 public class JobExperienceForCV {
 
+    public void setWorkingQuitDate(LocalDate workingQuitDate) {
+
+        if(workingQuitDate != null){
+            this.workingQuitDate = workingQuitDate;
+        } else {
+            String message= "Devam ediyor.";
+            this.workingQuitDate=LocalDate.now();
+            System.out.println(message);
+        }
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="job_experience_id")
@@ -35,10 +46,10 @@ public class JobExperienceForCV {
     @Column(name="working_start_date")
     @NotBlank
     @NotNull
-    private int workingStartDate;
+    private LocalDate workingStartDate;
 
     @Column(name="working_quit_date")
-    private int workingQuitDate;
+    private LocalDate workingQuitDate;
 
 
     @ManyToOne()

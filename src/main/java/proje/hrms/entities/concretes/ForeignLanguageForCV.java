@@ -16,6 +16,16 @@ import java.util.List;
 @Table(name = "foreign_languages")
 public class ForeignLanguageForCV {
 
+    public void setLevel(int level) {
+
+
+        if (level < 0 || level > 5) {
+            throw new IllegalArgumentException("Dil seviyeniz en düşük 1, en yüksek 5 olmalıdır.");
+        } else {
+            this.level = level;
+        }
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "foreign_language_id")

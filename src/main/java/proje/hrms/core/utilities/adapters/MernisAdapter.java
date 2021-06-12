@@ -2,7 +2,7 @@ package proje.hrms.core.utilities.adapters;
 
 import org.springframework.stereotype.Service;
 import proje.hrms.entities.concretes.Candidate;
-import proje.hrms.mernis.GEGKPSPublicSoap;
+import proje.hrms.core.utilities.outsourceServices.mernis.GEGKPSPublicSoap;
 
 @Service
 public class MernisAdapter implements PersonValidationService {

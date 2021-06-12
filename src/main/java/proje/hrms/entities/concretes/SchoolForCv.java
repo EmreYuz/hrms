@@ -8,37 +8,49 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="schools")
+@Table(name = "schools")
 public class SchoolForCv {
+
+    public void setSchoolGraduateDate(LocalDate schoolGraduateDate) {
+
+        if(schoolGraduateDate != null){
+            this.schoolGraduateDate = schoolGraduateDate;
+        } else {
+            String message= "Devam ediyor.";
+            this.schoolGraduateDate=LocalDate.now();
+            System.out.println(message);
+        }
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="school_id")
+    @Column(name = "school_id")
     private int schoolId;
 
-    @Column(name="school_name")
+    @Column(name = "school_name")
     @NotBlank
     @NotNull
     private String schoolName;
 
-    @Column(name="school_department")
+    @Column(name = "school_department")
     @NotBlank
     @NotNull
     private String schoolDepartment;
 
-    @Column(name="school_start_date")
+    @Column(name = "school_start_date")
     @NotBlank
     @NotNull
-    private int schoolStartDate;
+    private LocalDate schoolStartDate;
 
-    @Column(name="school_graduate_date")
-    private int schoolGraduateDate;
+    @Column(name = "school_graduate_date")
+    private LocalDate schoolGraduateDate;
 
 
     @ManyToOne()

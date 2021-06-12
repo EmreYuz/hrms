@@ -14,8 +14,10 @@ public interface SchoolForCvService {
 
     Result delete(SchoolForCv schoolForCv);
 
-    DataResult<List<SchoolForCv>> getSchoolForCvByCandidate_NationalIdNo(String nationalIdNo);
+    DataResult<List<SchoolForCv>> getSchoolsForCvByCandidate_Id(int id);
 
-    DataResult<List<SchoolForCv>> getAllByCandidateIdOrderBySchoolGraduateDateDesc(int id);
+    DataResult<List<SchoolForCv>> getSchoolForCvsByCandidate_IdOrderBySchoolGraduateDateDesc(int id);
+
+    DataResult<List<SchoolForCv>> getAllSchoolsSortedDesc(SchoolForCv schoolForCv);
 
 }

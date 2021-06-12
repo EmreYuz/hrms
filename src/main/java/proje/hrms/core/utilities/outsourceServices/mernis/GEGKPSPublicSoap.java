@@ -1,4 +1,4 @@
-package proje.hrms.mernis;
+package proje.hrms.core.utilities.outsourceServices.mernis;
 
 //----------------------------------------------------
 //
@@ -13,12 +13,8 @@ package proje.hrms.mernis;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.serialization.*;
-import org.ksoap2.transport.*;
-import org.kxml2.kdom.Element;
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 

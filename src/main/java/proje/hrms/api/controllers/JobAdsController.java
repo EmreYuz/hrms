@@ -1,10 +1,7 @@
 package proje.hrms.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import proje.hrms.business.abstracts.JobAdService;
 import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.Result;
@@ -48,7 +45,7 @@ public class JobAdsController {
     }
 
     @PostMapping("/add")
-    public Result add(@Valid JobAd jobAd){
+    public Result add(@Valid @RequestBody JobAd jobAd){
 
         return this.jobAdService.add(jobAd);
     }
