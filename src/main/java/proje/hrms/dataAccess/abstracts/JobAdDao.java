@@ -3,7 +3,6 @@ package proje.hrms.dataAccess.abstracts;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import proje.hrms.entities.concretes.JobAd;
-import proje.hrms.entities.dtos.JobAdWithEmployerAndJobDto;
 
 import java.util.List;
 

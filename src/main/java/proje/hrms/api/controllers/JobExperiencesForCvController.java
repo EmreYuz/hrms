@@ -27,7 +27,7 @@ public class JobExperiencesForCvController {
     }
 
     @GetMapping("/getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc")
-    public DataResult<List<JobExperienceForCV>> getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(int id){
+    public DataResult<List<JobExperienceForCV>> getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(@RequestParam int id){
         return this.jobExperienceForCvService.getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(id);
     }
 }

@@ -9,7 +9,6 @@ import proje.hrms.core.utilities.result.SuccessDataResult;
 import proje.hrms.core.utilities.result.SuccessResult;
 import proje.hrms.dataAccess.abstracts.JobAdDao;
 import proje.hrms.entities.concretes.JobAd;
-import proje.hrms.entities.dtos.JobAdWithEmployerAndJobDto;
 
 import java.util.List;
 

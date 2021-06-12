@@ -6,7 +6,6 @@ import proje.hrms.business.abstracts.JobAdService;
 import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.Result;
 import proje.hrms.entities.concretes.JobAd;
-import proje.hrms.entities.dtos.JobAdWithEmployerAndJobDto;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -19,6 +18,7 @@ public class JobAdsController {
 
     @Autowired
     public JobAdsController(JobAdService jobAdService) {
+
         this.jobAdService = jobAdService;
     }
 
@@ -40,7 +40,7 @@ public class JobAdsController {
     }
 
     @GetMapping("/getJobAdsByEmployerAndIsActive")
-    public DataResult<List<JobAd>> getJobAdsByEmployerAndIsActive(int employerId) {
+    public DataResult<List<JobAd>> getJobAdsByEmployerAndIsActive(@RequestParam int employerId) {
         return this.jobAdService.getJobAdsByEmployerAndIsActive(employerId);
     }
 

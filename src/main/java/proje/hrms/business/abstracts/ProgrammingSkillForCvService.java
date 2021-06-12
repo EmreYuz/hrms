@@ -4,7 +4,7 @@ import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.Result;
 import proje.hrms.entities.concretes.ProgrammingSkillForCv;
 
-public interface ProgrammingSkillService {
+public interface ProgrammingSkillForCvService {
 
     Result add(ProgrammingSkillForCv programmingSkillForCv);
 

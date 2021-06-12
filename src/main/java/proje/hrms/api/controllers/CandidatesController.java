@@ -9,6 +9,7 @@ import proje.hrms.business.abstracts.CandidateService;
 import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.ErrorDataResult;
 import proje.hrms.entities.concretes.Candidate;
+import proje.hrms.entities.dtos.CvDto;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +44,11 @@ public class CandidatesController {
     public DataResult<List<Candidate>> getAll(){
 
         return this.candidateService.getAll();
+    }
+
+    @GetMapping("getCvByCandidateId")
+    public DataResult <CvDto> getCvByCandidateId(@RequestParam int id){
+        return this.candidateService.getCvByCandidateId(id);
     }
 
 }

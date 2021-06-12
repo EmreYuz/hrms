@@ -28,6 +28,7 @@ public class UrlsForCvController {
 
     @PostMapping("updateUrl")
     public Result updateUrl(@Valid @RequestBody UrlForCv urlForCv) {
+
         return this.urlForCvService.updateUrl(urlForCv);
     }
 
@@ -43,6 +44,7 @@ public class UrlsForCvController {
 
     @GetMapping("getAll")
     public DataResult<List<UrlForCv>> getAll() {
+
         return this.urlForCvService.getAll();
     }
 

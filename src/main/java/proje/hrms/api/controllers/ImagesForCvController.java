@@ -50,6 +50,7 @@ public class ImagesForCvController {
     }
 
     public DataResult<List<ImageForCv>> getAll() {
+
         return this.imageForCvService.getAll();
     }
 }

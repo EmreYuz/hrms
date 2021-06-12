@@ -3,7 +3,6 @@ package proje.hrms.business.abstracts;
 import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.Result;
 import proje.hrms.entities.concretes.JobAd;
-import proje.hrms.entities.dtos.JobAdWithEmployerAndJobDto;
 
 import java.util.List;
 
