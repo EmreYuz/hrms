@@ -7,9 +7,9 @@ import proje.hrms.entities.concretes.SystemPersonnel;
 @Service
 public class PersonnelVerificationManager implements PersonnelVerificationService {
     @Override
-    public boolean isPersonnelApproved(Employer employer, SystemPersonnel systemPersonnel) {
+    public boolean isPersonnelApproved(Employer employer) {
 
-        System.out.println("İş veren başvurusu " + systemPersonnel.getFirstName() + " " + systemPersonnel.getLastName() + " isimli personel tarafından onaylandı: " + employer.getEmail());
+        System.out.println("İş veren başvurusu onaylandı: " + employer.getEmail());
 
         return true;
     }

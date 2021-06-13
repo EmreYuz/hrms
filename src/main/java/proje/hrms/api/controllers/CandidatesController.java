@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import proje.hrms.business.abstracts.CandidateService;
 import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.ErrorDataResult;
+import proje.hrms.core.utilities.result.Result;
 import proje.hrms.entities.concretes.Candidate;
 import proje.hrms.entities.dtos.CvDto;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,14 +42,38 @@ public class CandidatesController {
         return errors;
     }
 
+    @PostMapping("/add")
+    public Result add(@Valid @RequestBody Candidate candidate) {
+
+        return this.candidateService.add(candidate);
+    }
+
+    @PostMapping("/update")
+    public Result update(@Valid @RequestBody Candidate candidate){
+
+        return this.candidateService.update(candidate);
+    }
+
+    @PostMapping("/deleteById")
+    public DataResult<Candidate> deleteById(@RequestParam int id){
+
+        return this.candidateService.deleteById(id);
+    }
+
     @GetMapping("/getAll")
-    public DataResult<List<Candidate>> getAll(){
+    public DataResult<List<Candidate>> getAll() {
 
         return this.candidateService.getAll();
     }
 
+    @GetMapping("getCandidateById")
+    public DataResult<Candidate> getById(@RequestParam int id){
+
+        return this.candidateService.getById(id);
+    }
+
     @GetMapping("getCvByCandidateId")
-    public DataResult <CvDto> getCvByCandidateId(@RequestParam int id){
+    public DataResult<CvDto> getCvByCandidateId(@RequestParam int id) {
         return this.candidateService.getCvByCandidateId(id);
     }
 

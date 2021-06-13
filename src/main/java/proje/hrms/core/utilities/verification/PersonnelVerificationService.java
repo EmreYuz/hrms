@@ -5,5 +5,5 @@ import proje.hrms.entities.concretes.SystemPersonnel;
 
 public interface PersonnelVerificationService {
 
-    boolean isPersonnelApproved(Employer employer, SystemPersonnel systemPersonnel);
+    boolean isPersonnelApproved(Employer employer);
 }

@@ -18,4 +18,6 @@ public interface ImageForCvService {
     DataResult<ImageForCv> findImageForCvByCandidate_Id(int id);
 
     DataResult<List<ImageForCv>> getAll();
+
+    DataResult<ImageForCv> getImageForCvById(int id);
 }

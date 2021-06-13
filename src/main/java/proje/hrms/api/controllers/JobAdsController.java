@@ -50,4 +50,14 @@ public class JobAdsController {
         return this.jobAdService.add(jobAd);
     }
 
+    @PostMapping("/update")
+    public Result update(@Valid @RequestBody JobAd jobAd){
+
+        return this.jobAdService.update(jobAd);
+    }
+
+    @PostMapping("/delete")
+    public Result delete(@RequestParam int id){
+        return this.jobAdService.delete(id);
+    }
 }

@@ -26,6 +26,16 @@ public class JobExperiencesForCvController {
         return this.jobExperienceForCvService.add(jobExperienceForCV);
     }
 
+    @PostMapping("/update")
+    public Result update(@Valid @RequestBody JobExperienceForCV jobExperienceForCV){
+        return this.jobExperienceForCvService.update(jobExperienceForCV);
+    }
+
+    @PostMapping("/delete")
+    public Result delete(@RequestParam int id){
+        return this.jobExperienceForCvService.delete(id);
+    }
+
     @GetMapping("/getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc")
     public DataResult<List<JobExperienceForCV>> getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(@RequestParam int id){
         return this.jobExperienceForCvService.getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(id);

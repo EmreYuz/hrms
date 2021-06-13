@@ -28,4 +28,14 @@ public class ForeignLanguagesForCvController {
     public Result add(@Valid @RequestBody ForeignLanguageForCV foreignLanguageForCV) {
         return this.foreignLanguageForCvService.add(foreignLanguageForCV);
     }
+
+    @PostMapping("update")
+    public Result update(ForeignLanguageForCV foreignLanguageForCV){
+        return this.foreignLanguageForCvService.update(foreignLanguageForCV);
+    }
+
+    @PostMapping("/delete")
+    public Result delete(int id){
+        return this.foreignLanguageForCvService.delete(id);
+    }
 }

@@ -3,10 +3,9 @@ package proje.hrms.business.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proje.hrms.business.abstracts.*;
-import proje.hrms.core.utilities.result.DataResult;
-import proje.hrms.core.utilities.result.Result;
-import proje.hrms.core.utilities.result.SuccessDataResult;
-import proje.hrms.core.utilities.result.SuccessResult;
+import proje.hrms.business.validators.auth.CandidateValidationService;
+import proje.hrms.business.validators.auth.EmployerValidationService;
+import proje.hrms.core.utilities.result.*;
 import proje.hrms.dataAccess.abstracts.CandidateDao;
 import proje.hrms.entities.concretes.*;
 import proje.hrms.entities.dtos.CvDto;
@@ -17,6 +16,8 @@ import java.util.List;
 public class CandidateManager implements CandidateService {
 
     private CandidateDao candidateDao;
+    private CandidateValidationService candidateValidationService;
+    private EmployerValidationService employerValidationService;
     private CoverLetterForCvService coverLetterForCvService;
     private ForeignLanguageForCvService foreignLanguageForCVService;
     private JobExperienceForCvService jobExperienceForCVService;
@@ -27,6 +28,8 @@ public class CandidateManager implements CandidateService {
 
     @Autowired
     public CandidateManager(CandidateDao candidateDao,
+                            CandidateValidationService candidateValidationService,
+                            EmployerValidationService employerValidationService,
                             CoverLetterForCvService coverLetterForCvService,
                             ForeignLanguageForCvService foreignLanguageForCVService,
                             JobExperienceForCvService jobExperienceForCVService,
@@ -34,7 +37,10 @@ public class CandidateManager implements CandidateService {
                             SchoolForCvService schoolForCvService,
                             UrlForCvService urlForCvService,
                             ImageForCvService imageForCvService) {
+
         this.candidateDao = candidateDao;
+        this.candidateValidationService = candidateValidationService;
+        this.employerValidationService = employerValidationService;
         this.coverLetterForCvService = coverLetterForCvService;
         this.foreignLanguageForCVService = foreignLanguageForCVService;
         this.jobExperienceForCVService = jobExperienceForCVService;
@@ -46,14 +52,23 @@ public class CandidateManager implements CandidateService {
 
     @Override
     public Result add(Candidate candidate) {
-        this.candidateDao.save(candidate); // bunu authService enjekte etmeden yaparsan validationları almamış oluyorsun. revize et.
-        return new SuccessResult("İş arayan sisteme eklendi.");
+
+        if(!this.candidateValidationService.isValidated(candidate)){
+            return new ErrorResult("Kullanıcı doğrulanamadı");
+        }
+        this.candidateDao.save(candidate);
+        return new SuccessResult("Kullanıcı sisteme kaydedildi.");
     }
 
     @Override
     public Result update(Candidate candidate) {
 
-        this.candidateDao.save(candidate);
+        Candidate candidateToUpdate = this.candidateDao.getById(candidate.getId());
+
+        if(!this.candidateValidationService.isValidated(candidateToUpdate)){
+            return new ErrorResult("Kullanıcı doğrulanamadı");
+        }
+        this.candidateDao.save(candidateToUpdate);
         return new SuccessResult("Kayıt güncellendi.");
     }
 
@@ -82,7 +97,7 @@ public class CandidateManager implements CandidateService {
         cv.setProgrammingSkills(candidate.getProgramingSkills());
         cv.setSchools(candidate.getSchools());
         cv.setUrls(candidate.getUrls());
-        cv.setImage(candidate.getImageForCv());
+//        cv.setImage(candidate.getImageForCv());
         return new SuccessDataResult<CvDto>(cv);
     }
 

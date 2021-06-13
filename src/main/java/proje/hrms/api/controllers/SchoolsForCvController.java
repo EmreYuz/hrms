@@ -23,13 +23,35 @@ public class SchoolsForCvController {
     }
 
     @PostMapping("/add")
-    public Result add(@Valid @RequestBody SchoolForCv schoolForCv){
+    public Result add(@Valid @RequestBody SchoolForCv schoolForCv) {
 
         return this.schoolForCvService.add(schoolForCv);
     }
 
+    @PostMapping("/update")
+    public Result update(@Valid @RequestBody SchoolForCv schoolForCv) {
+
+        return this.schoolForCvService.update(schoolForCv);
+    }
+
+    @PostMapping("/delete")
+    public Result delete(@RequestParam int id) {
+
+        return this.schoolForCvService.delete(id);
+    }
+
+    @GetMapping("getSchoolsForCvByCandidate_Id")
+    public DataResult<List<SchoolForCv>> getSchoolsForCvByCandidate_Id(@RequestParam int id) {
+        return this.schoolForCvService.getSchoolsForCvByCandidate_Id(id);
+    }
+
+    @GetMapping("getSchoolForCvsByCandidate_IdOrderBySchoolGraduateDateDesc")
+    public DataResult<List<SchoolForCv>> getSchoolForCvsByCandidate_IdOrderBySchoolGraduateDateDesc(@RequestParam int id) {
+        return this.schoolForCvService.getSchoolForCvsByCandidate_IdOrderBySchoolGraduateDateDesc(id);
+    }
+
     @GetMapping("getAllSchoolsSortedDesc")
-    public DataResult<List<SchoolForCv>> getAllSchoolsSortedDesc(@RequestBody SchoolForCv schoolForCv){
+    public DataResult<List<SchoolForCv>> getAllSchoolsSortedDesc(@Valid @RequestBody SchoolForCv schoolForCv) {
         return this.schoolForCvService.getAllSchoolsSortedDesc(schoolForCv);
     }
 }

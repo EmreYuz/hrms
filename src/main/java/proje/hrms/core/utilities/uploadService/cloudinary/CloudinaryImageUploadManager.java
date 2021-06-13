@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @Service
-public class CloudinaryImageUploadManager implements ImageUploadService{
+public class CloudinaryImageUploadManager implements ImageUploadService {
 
     private Cloudinary cloudinary;
 
@@ -28,7 +28,7 @@ public class CloudinaryImageUploadManager implements ImageUploadService{
     public DataResult<Map> uploadImageFile(MultipartFile imageFile) {
         try {
             @SuppressWarnings("unchecked")
-            Map<String, String> resultMap =(Map<String, String>) cloudinary.uploader().upload(imageFile.getBytes(), ObjectUtils.emptyMap());
+            Map<String, String> resultMap = cloudinary.uploader().upload(imageFile.getBytes(), ObjectUtils.emptyMap());
             return new SuccessDataResult<Map>(resultMap);
         } catch (IOException e) {
             // TODO Auto-generated catch block

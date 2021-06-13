@@ -11,7 +11,6 @@ import proje.hrms.core.utilities.result.SuccessResult;
 import proje.hrms.dataAccess.abstracts.SchoolForCvDao;
 import proje.hrms.entities.concretes.SchoolForCv;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Service
@@ -32,12 +31,17 @@ public class SchoolForCvManager implements SchoolForCvService {
 
     @Override
     public Result update(SchoolForCv schoolForCv) {
-        return null;
+
+        SchoolForCv schoolForCvToUpdate = this.schoolForCvDao.getSchoolForCvBySchoolId(schoolForCv.getSchoolId());
+        this.schoolForCvDao.save(schoolForCvToUpdate);
+        return new SuccessResult("Okul güncellendi.");
     }
 
     @Override
-    public Result delete(SchoolForCv schoolForCv) {
-        return null;
+    public Result delete(int id) {
+
+        this.schoolForCvDao.deleteById(id);
+        return new SuccessResult("Okul silindi.");
     }
 
     @Override
@@ -55,5 +59,10 @@ public class SchoolForCvManager implements SchoolForCvService {
 
         Sort sort = Sort.by(Sort.Direction.DESC, "schoolGraduateDate");
         return new SuccessDataResult<List<SchoolForCv>>(this.schoolForCvDao.findAll(sort), "Okullar listelendi.");
+    }
+
+    @Override
+    public DataResult<SchoolForCv> getSchoolForCvBySchoolId(int id) {
+        return new SuccessDataResult<SchoolForCv>(this.schoolForCvDao.getSchoolForCvBySchoolId(id));
     }
 }

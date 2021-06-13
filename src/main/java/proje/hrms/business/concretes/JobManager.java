@@ -30,17 +30,27 @@ public class JobManager implements JobService {
 
     @Override
     public Result update(Job job) {
-        return null;
+
+        Job jobToUpdate = this.jobDao.getJobById(job.getId());
+        this.jobDao.save(jobToUpdate);
+        return new SuccessResult("Posizyon güncellendi.");
     }
 
     @Override
-    public Result delete(Job job) {
-        return null;
+    public Result delete(int id) {
+
+        this.jobDao.deleteById(id);
+        return new SuccessResult("Pozisyon silindi.");
     }
 
     @Override
     public DataResult<List<Job>> getAll() {
         return new SuccessDataResult<List<Job>>(this.jobDao.findAll(), "Pozisyonlar listelendi.");
+    }
+
+    @Override
+    public DataResult<Job> getJobById(int id) {
+        return new SuccessDataResult<Job>(this.jobDao.getJobById(id));
     }
 
 }

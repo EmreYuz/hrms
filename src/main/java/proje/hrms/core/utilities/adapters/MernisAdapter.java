@@ -14,8 +14,8 @@ public class MernisAdapter implements PersonValidationService {
     public boolean isValidatedPerson(Candidate candidate) {
         try {
             result = gegkpsPublicSoap.TCKimlikNoDogrula(Long.parseLong(candidate.getNationalIdNo()),
-                    candidate.getFirstName(),
-                    candidate.getLastName(),
+                    candidate.getFirstName().toUpperCase(),
+                    candidate.getLastName().toUpperCase(),
                     candidate.getBirthYear());
 
             return result;

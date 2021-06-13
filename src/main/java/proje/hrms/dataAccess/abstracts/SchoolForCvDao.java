@@ -11,4 +11,6 @@ public interface SchoolForCvDao extends JpaRepository<SchoolForCv, Integer> {
 
     List<SchoolForCv> getSchoolForCvsByCandidate_IdOrderBySchoolGraduateDateDesc(int id);
 
+    SchoolForCv getSchoolForCvBySchoolId(int id);
+
 }

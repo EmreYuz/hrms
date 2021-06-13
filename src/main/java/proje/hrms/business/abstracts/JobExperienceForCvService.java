@@ -12,7 +12,9 @@ public interface JobExperienceForCvService {
 
     Result update(JobExperienceForCV jobExperienceForCV);
 
-    Result delete(JobExperienceForCV jobExperienceForCV);
+    Result delete(int id);
 
     DataResult<List<JobExperienceForCV>> getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(int id);
+
+    DataResult<JobExperienceForCV> getJobExperienceForCVByJobExperienceId(int id);
 }

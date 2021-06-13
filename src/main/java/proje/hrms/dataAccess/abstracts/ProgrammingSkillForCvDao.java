@@ -11,4 +11,6 @@ public interface ProgrammingSkillForCvDao extends JpaRepository<ProgrammingSkill
 
     ProgrammingSkillForCv deleteByProgrammingSkillId(int id);
 
+    ProgrammingSkillForCv getProgrammingSkillForCvByProgrammingSkillId(int id);
+
 }

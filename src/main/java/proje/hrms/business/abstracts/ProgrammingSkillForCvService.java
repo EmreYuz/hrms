@@ -12,4 +12,6 @@ public interface ProgrammingSkillForCvService {
 
     DataResult <ProgrammingSkillForCv> deleteByProgrammingSkillId(int id);
 
+    DataResult<ProgrammingSkillForCv> getProgrammingSkillForCvByProgrammingSkillId(int id);
+
 }

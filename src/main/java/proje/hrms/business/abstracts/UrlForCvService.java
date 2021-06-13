@@ -17,4 +17,6 @@ public interface UrlForCvService {
     DataResult<List<UrlForCv>> getUrlForCvByCandidate_Id(int id);
 
     DataResult<List<UrlForCv>> getAll();
+
+    DataResult<UrlForCv> getUrlForCvByCandidateUrlId(int id);
 }

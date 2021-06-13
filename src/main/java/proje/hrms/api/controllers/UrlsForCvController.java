@@ -34,11 +34,13 @@ public class UrlsForCvController {
 
     @PostMapping("deleteUrl")
     public Result deleteUrl(@RequestParam int id) {
+
         return this.urlForCvService.deleteUrl(id);
     }
 
     @GetMapping("getUrlForCvByCandidate_Id")
     public DataResult<List<UrlForCv>> getUrlForCvByCandidate_Id(@RequestParam int id) {
+
         return this.urlForCvService.getUrlForCvByCandidate_Id(id);
     }
 

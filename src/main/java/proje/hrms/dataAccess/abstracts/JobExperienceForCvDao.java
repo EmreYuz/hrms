@@ -9,4 +9,6 @@ import java.util.List;
 public interface JobExperienceForCvDao extends JpaRepository<JobExperienceForCV, Integer> {
 
     List<JobExperienceForCV> getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(int id);
+
+    JobExperienceForCV getJobExperienceForCVByJobExperienceId(int id);
 }

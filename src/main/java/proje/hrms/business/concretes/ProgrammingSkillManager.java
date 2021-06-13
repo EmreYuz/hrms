@@ -28,12 +28,18 @@ public class ProgrammingSkillManager implements ProgrammingSkillForCvService {
 
     @Override
     public Result update(ProgrammingSkillForCv programmingSkillForCv) {
-        this.programmingSkillForCvDao.save(programmingSkillForCv);
+        ProgrammingSkillForCv programmingSkillForCvToUpdate = this.programmingSkillForCvDao.getProgrammingSkillForCvByProgrammingSkillId(programmingSkillForCv.getProgrammingSkillId());
+        this.programmingSkillForCvDao.save(programmingSkillForCvToUpdate);
         return new SuccessResult("Programlama dili/teknolojisi güncellendi.");
     }
 
     @Override
     public DataResult<ProgrammingSkillForCv> deleteByProgrammingSkillId(int id) {
         return new SuccessDataResult<ProgrammingSkillForCv>(this.programmingSkillForCvDao.deleteByProgrammingSkillId(id));
+    }
+
+    @Override
+    public DataResult<ProgrammingSkillForCv> getProgrammingSkillForCvByProgrammingSkillId(int id) {
+        return new SuccessDataResult<ProgrammingSkillForCv>(this.programmingSkillForCvDao.getProgrammingSkillForCvByProgrammingSkillId(id));
     }
 }

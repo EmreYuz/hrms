@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface JobDao extends JpaRepository<Job, Integer> {
 
+    Job getJobById(int id);
+
 }

@@ -21,9 +21,9 @@ public class EmployerValidator implements EmployerValidationService {
                 this.personnelVerificationService = personnelVerificationService;
         }
 
-        public boolean isValidated(Employer employer, SystemPersonnel systemPersonnel){
+        public boolean isValidated(Employer employer){
                 if(!this.emailVerificationService.isVerificationCodeClicked(employer.getEmail())
-                        && !this.personnelVerificationService.isPersonnelApproved(employer, systemPersonnel)
+                        && !this.personnelVerificationService.isPersonnelApproved(employer)
                         && !ValidationBase.checkEmailAndDomain(employer.getEmail(), employer.getWebsite())){
                         return false;
                 }

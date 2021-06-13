@@ -24,8 +24,8 @@ public class CandidateValidator implements CandidateValidationService {
     public boolean isValidated(Candidate candidate){
 
         if(!this.emailVerificationService.isVerificationCodeClicked(candidate.getEmail())
-                && !this.personValidationService.isValidatedPerson(candidate)
-                && !ValidationBase.confirmPassword(candidate)
+                || !this.personValidationService.isValidatedPerson(candidate)
+                || !ValidationBase.confirmPassword(candidate)
         ){
 
             return false;

@@ -16,9 +16,9 @@ import java.util.List;
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name = "user_id")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAds"})
-// @EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false)
 public class Employer extends User {
 
     @Column(name = "phone_number")

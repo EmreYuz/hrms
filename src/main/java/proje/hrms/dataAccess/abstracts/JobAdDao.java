@@ -18,5 +18,7 @@ public interface JobAdDao extends JpaRepository<JobAd, Integer> {
 
     @Query("from JobAd where isActive = true and employer.id=:employerId")
     List<JobAd> getJobAdsByEmployerAndIsActive(int employerId);
+
+    JobAd getJobAdById(int id);
 }
 

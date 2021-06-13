@@ -30,12 +30,17 @@ public class JobAdManager implements JobAdService {
 
     @Override
     public Result update(JobAd jobAd) {
-        return null;
+
+        JobAd jobAdToUpdate = this.jobAdDao.getJobAdById(jobAd.getId());
+        this.jobAdDao.save(jobAdToUpdate);
+        return new SuccessResult("İş ilanı güncellendi.");
     }
 
     @Override
-    public Result delete(JobAd jobAd) {
-        return null;
+    public Result delete(int id) {
+
+        this.jobAdDao.deleteById(id);
+        return new SuccessResult("İş ilanı silindi.");
     }
 
     @Override
@@ -61,5 +66,10 @@ public class JobAdManager implements JobAdService {
     @Override
     public DataResult<List<JobAd>> getJobAdsByEmployerAndIsActive(int employerId) {
         return new SuccessDataResult<List<JobAd>>(this.jobAdDao.getJobAdsByEmployerAndIsActive(employerId));
+    }
+
+    @Override
+    public DataResult<JobAd> getJobAdById(int id) {
+        return new SuccessDataResult<JobAd>(this.jobAdDao.getJobAdById(id));
     }
 }

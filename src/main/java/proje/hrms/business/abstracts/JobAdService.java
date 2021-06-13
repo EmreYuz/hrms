@@ -13,7 +13,7 @@ public interface JobAdService {
 
     Result update(JobAd jobAd);
 
-    Result delete(JobAd jobAd);
+    Result delete(int id);
 
     DataResult<List<JobAd>> getAll();
 
@@ -24,4 +24,6 @@ public interface JobAdService {
     DataResult<List<JobAd>> getJobAdsByIsActiveOrderedByCreatedDateDesc();
 
     DataResult<List<JobAd>> getJobAdsByEmployerAndIsActive(int employerId);
+
+    DataResult<JobAd> getJobAdById(int id);
 }

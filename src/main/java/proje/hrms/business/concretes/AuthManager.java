@@ -45,7 +45,7 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result registerEmployer(Employer employer, SystemPersonnel systemPersonnel) {
-        if(!this.employerValidationService.isValidated(employer, systemPersonnel)){
+        if(!this.employerValidationService.isValidated(employer)){
             return new ErrorResult("Kullanıcı doğrulanamadı.");
         }
         this.employerService.add(employer);

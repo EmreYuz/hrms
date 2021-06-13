@@ -44,8 +44,6 @@ public class JobExperienceForCV {
     private String position;
 
     @Column(name="working_start_date")
-    @NotBlank
-    @NotNull
     private LocalDate workingStartDate;
 
     @Column(name="working_quit_date")

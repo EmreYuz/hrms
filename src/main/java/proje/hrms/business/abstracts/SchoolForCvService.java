@@ -12,12 +12,14 @@ public interface SchoolForCvService {
 
     Result update(SchoolForCv schoolForCv);
 
-    Result delete(SchoolForCv schoolForCv);
+    Result delete(int id);
 
     DataResult<List<SchoolForCv>> getSchoolsForCvByCandidate_Id(int id);
 
     DataResult<List<SchoolForCv>> getSchoolForCvsByCandidate_IdOrderBySchoolGraduateDateDesc(int id);
 
     DataResult<List<SchoolForCv>> getAllSchoolsSortedDesc(SchoolForCv schoolForCv);
+
+    DataResult<SchoolForCv> getSchoolForCvBySchoolId(int id);
 
 }

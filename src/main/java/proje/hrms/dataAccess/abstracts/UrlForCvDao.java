@@ -8,4 +8,6 @@ import java.util.List;
 public interface UrlForCvDao extends JpaRepository<UrlForCv, Integer> {
 
     List<UrlForCv> getUrlForCvByCandidate_Id(int id);
+
+    UrlForCv getUrlForCvByCandidateUrlId(int id);
 }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
 @Entity
 @Table(name = "candidates")
 @EqualsAndHashCode(callSuper = false)
-@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name = "user_id")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAds"})
 public class Candidate extends User {
 
@@ -39,19 +40,13 @@ public class Candidate extends User {
     private String nationalIdNo;
 
     @Column(name = "birth_year")
-    @NotBlank
-    @NotNull
     private Integer birthYear;
 
     @Column(name = "is_verified_by_email", columnDefinition = "boolean default false")
-    @NotBlank
-    @NotNull
     @JsonIgnore
     private Boolean isEmailVerified = false;
 
     @Column(name = "is_verified_by_mernis", columnDefinition = "boolean default false")
-    @NotBlank
-    @NotNull
     @JsonIgnore
     private Boolean isMernisVerified = false;
 

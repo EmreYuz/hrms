@@ -30,16 +30,26 @@ public class JobExperienceForCvManager implements JobExperienceForCvService {
 
     @Override
     public Result update(JobExperienceForCV jobExperienceForCV) {
-        return null;
+
+        JobExperienceForCV jobExperienceForCVToUpdate = this.jobExperienceForCvDao.getJobExperienceForCVByJobExperienceId(jobExperienceForCV.getJobExperienceId());
+        this.jobExperienceForCvDao.save(jobExperienceForCVToUpdate);
+        return new SuccessResult("İş tecrübesi güncellendi.");
     }
 
     @Override
-    public Result delete(JobExperienceForCV jobExperienceForCV) {
-        return null;
+    public Result delete(int id) {
+
+        this.jobExperienceForCvDao.deleteById(id);
+        return new SuccessResult("İş ilanı silindi.");
     }
 
     @Override
     public DataResult<List<JobExperienceForCV>> getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(int id) {
         return new SuccessDataResult<List<JobExperienceForCV>>(this.jobExperienceForCvDao.getJobExperienceForCVByCandidate_IdOrderByWorkingQuitDateDesc(id));
+    }
+
+    @Override
+    public DataResult<JobExperienceForCV> getJobExperienceForCVByJobExperienceId(int id) {
+        return new SuccessDataResult<JobExperienceForCV>(this.jobExperienceForCvDao.getJobExperienceForCVByJobExperienceId(id));
     }
 }

@@ -12,8 +12,10 @@ public interface JobService {
 
     Result update(Job job);
 
-    Result delete(Job job);
+    Result delete(int id);
 
     DataResult<List<Job>> getAll();
+
+    DataResult<Job> getJobById(int id);
 
 }

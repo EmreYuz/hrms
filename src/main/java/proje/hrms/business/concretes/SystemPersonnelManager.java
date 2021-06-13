@@ -3,7 +3,9 @@ package proje.hrms.business.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proje.hrms.business.abstracts.SystemPersonnelService;
+import proje.hrms.core.utilities.result.DataResult;
 import proje.hrms.core.utilities.result.Result;
+import proje.hrms.core.utilities.result.SuccessDataResult;
 import proje.hrms.core.utilities.result.SuccessResult;
 import proje.hrms.dataAccess.abstracts.SystemPersonnelDao;
 import proje.hrms.entities.concretes.SystemPersonnel;
@@ -26,11 +28,21 @@ private SystemPersonnelDao systemPersonnelDao;
 
     @Override
     public Result update(SystemPersonnel systemPersonnel) {
-        return null;
+
+        SystemPersonnel systemPersonnelToUpdate = this.systemPersonnelDao.getSystemPersonnelById(systemPersonnel.getId());
+        this.systemPersonnelDao.save(systemPersonnelToUpdate);
+        return new SuccessResult("Sistem personeli güncellendi.");
     }
 
     @Override
-    public Result delete(SystemPersonnel systemPersonnel) {
-        return null;
+    public Result delete(int id) {
+
+        this.systemPersonnelDao.deleteById(id);
+        return new SuccessResult("Sistem personeli silindi.");
+    }
+
+    @Override
+    public DataResult<SystemPersonnel> getSystemPersonnelById(int id) {
+        return new SuccessDataResult<SystemPersonnel>(this.systemPersonnelDao.getSystemPersonnelById(id));
     }
 }

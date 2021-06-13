@@ -30,7 +30,8 @@ public class UrlForCvManager implements UrlForCvService {
 
     @Override
     public Result updateUrl(UrlForCv urlForCv) {
-        this.urlForCvDao.save(urlForCv);
+        UrlForCv urlForCvToUpdate = this.urlForCvDao.getUrlForCvByCandidateUrlId(urlForCv.getCandidateUrlId());
+        this.urlForCvDao.save(urlForCvToUpdate);
         return new SuccessResult("Url güncellendi.");
     }
 
@@ -48,5 +49,10 @@ public class UrlForCvManager implements UrlForCvService {
     @Override
     public DataResult<List<UrlForCv>> getAll() {
         return new SuccessDataResult<List<UrlForCv>>(this.urlForCvDao.findAll());
+    }
+
+    @Override
+    public DataResult<UrlForCv> getUrlForCvByCandidateUrlId(int id) {
+        return new SuccessDataResult<UrlForCv>(this.urlForCvDao.getUrlForCvByCandidateUrlId(id));
     }
 }

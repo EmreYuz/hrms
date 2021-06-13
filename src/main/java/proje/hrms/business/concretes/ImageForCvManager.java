@@ -31,7 +31,9 @@ public class ImageForCvManager implements ImageForCvService {
     // burası kontrol edilecek!!!!!
     @Override
     public Result add(ImageForCv imageForCv, MultipartFile imageFile) {
-        Map<String, String> uploadImage = ((Map<String, String>) this.imageUploadService.uploadImageFile(imageFile));
+//        Map<String, String> uploadImage = ((Map<String, String>) this.imageUploadService.uploadImageFile(imageFile));
+
+        Map<String,String> uploadImage = this.imageUploadService.uploadImageFile(imageFile).getData();
         imageForCv.setImageUrl(uploadImage.get("imageUrl"));
         this.imageForCvDao.save(imageForCv);
         return new SuccessResult("Fotoğraf eklendi.");
@@ -39,7 +41,8 @@ public class ImageForCvManager implements ImageForCvService {
 
     @Override
     public Result update(ImageForCv imageForCv) {
-        this.imageForCvDao.save(imageForCv);
+        ImageForCv imageForCvToUpdate = this.imageForCvDao.getImageForCvById(imageForCv.getId());
+        this.imageForCvDao.save(imageForCvToUpdate);
         return new SuccessResult("Fotoğraf güncellendi.");
     }
 
@@ -59,5 +62,10 @@ public class ImageForCvManager implements ImageForCvService {
     public DataResult<List<ImageForCv>> getAll() {
 
         return new SuccessDataResult<List<ImageForCv>>(this.imageForCvDao.findAll());
+    }
+
+    @Override
+    public DataResult<ImageForCv> getImageForCvById(int id) {
+        return new SuccessDataResult<ImageForCv>(this.imageForCvDao.getImageForCvById(id));
     }
 }

@@ -45,8 +45,6 @@ public class SchoolForCv {
     private String schoolDepartment;
 
     @Column(name = "school_start_date")
-    @NotBlank
-    @NotNull
     private LocalDate schoolStartDate;
 
     @Column(name = "school_graduate_date")
